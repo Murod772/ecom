@@ -1,7 +1,16 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import LoginModal from "../LoginComponent/LoginModal";
 
 const HeaderComponent = () => {
+  const token = useSelector((state: RootState) => state.auth.token);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
   return (
     <header className="backdrop-blur-16 bg-opacity-85 ">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -109,7 +118,75 @@ const HeaderComponent = () => {
                 />
               </svg>
             </button>
-            <button className="mx-2 flex items-center space-x-2">
+
+            <div>
+              {token ? (
+                // If the user is logged in, show the user button
+                <button className="mx-2 flex items-center space-x-2">
+                  <Image
+                    src="/user.png"
+                    alt="user Icon"
+                    width={50}
+                    height={50}
+                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
+                    fill="none"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="#777777"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              ) : (
+                // If the user is not logged in, show the sign-in button
+                <button
+                style={{ width: '150px' }}
+                  className="mx-2 border border-ContentBlack px-4 py-2 rounded-md flex justify-center items-center space-x-2 text-ContentBlack"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15"
+                      stroke="#121212"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 17L15 12L10 7"
+                      stroke="#121212"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15 12H3"
+                      stroke="#121212"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p>Вход</p>
+                </button>
+              )}
+              {isModalOpen && <LoginModal onClose={handleModalClose} />}
+            </div>
+            {/* <button className="mx-2 flex items-center space-x-2">
               <Image
                 src="/user.png"
                 alt="user Icon"
@@ -131,7 +208,7 @@ const HeaderComponent = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </button> */}
           </nav>
         </div>
       </div>
