@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-rgb: 246, 247, 248;
+  --gray-777: #777;
+}
+
+
+body {
+  background-color: rgb(var(--background-rgb));
+}
+
+a{
+  color: var(--gray-777)
+}
