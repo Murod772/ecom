@@ -18,7 +18,6 @@ export const authSlice = createSlice({
     clearToken: (state) => {
       state.token = null;
     },
-    // Add other reducers here if necessary
   },
 });
 

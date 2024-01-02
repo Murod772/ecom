@@ -6,8 +6,14 @@ interface LoginRequest {
   password: string;
 }
 
+
+const initialState = {
+  searchResults: [],
+};
+
 interface LoginResponse {
-  access_token: string; // Adjust based on the actual API response
+  access: string; 
+  refresh: string;
 }
 
 // Define our single API slice object
@@ -21,7 +27,7 @@ export const apiSlice = createApi({
       // If we have a token set in state, let's assume that we should be passing it.
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
-      }
+      } 
       return headers;
     },
   }),
@@ -33,10 +39,19 @@ export const apiSlice = createApi({
         body: credentials,
       }),
     }),
-    getAdverts: builder.query<any, void>({
-      query: () => '/wb/adverts/?type=6',
+    getAdverts: builder.query<any, { input?: string;}>({
+      query: ({ input = '',}) => ({
+        url: '/wb/adverts/',
+        params: {type: 6, input },
+      }),
+    }),
+    getCatalogs: builder.query<any, void>({
+      query: () => '/wb/catalogs/',
+    }),
+    getCategoryPriorities: builder.query<CategoryPriorityType[], void>({
+      query: () => '/path/to/subject_priorities',
     }),
   }),
 });
 
-export const { useLoginMutation, useGetAdvertsQuery } = apiSlice;
+export const { useLoginMutation, useLazyGetAdvertsQuery, useGetCatalogsQuery  } = apiSlice;
