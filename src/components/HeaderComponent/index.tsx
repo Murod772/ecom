@@ -149,7 +149,7 @@ const HeaderComponent = () => {
               ) : (
                 // If the user is not logged in, show the sign-in button
                 <button
-                style={{ width: '150px' }}
+                  style={{ width: "150px" }}
                   className="mx-2 border border-ContentBlack px-4 py-2 rounded-md flex justify-center items-center space-x-2 text-ContentBlack"
                   onClick={() => setIsModalOpen(true)}
                 >

@@ -4,10 +4,6 @@ import { RootState } from "../../redux/store";
 import BasicTableComponent from "./table";
 import SubjectPriorityComponent from "./subjectPriority";
 
-interface AdvertComponentProps {
-  adverts: object; // Replace 'any' with the actual type of your adverts
-  loading: boolean;
-}
 const AdvertsComponent: React.FC = () => {
   const [page, setPage] = useState(1);
   const adverts = useSelector(

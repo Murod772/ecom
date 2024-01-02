@@ -1,5 +1,5 @@
-import React from 'react';
-import { useGetCatalogsQuery } from '../api/apiSlice';
+import React from "react";
+import { useGetCatalogsQuery } from "../api/apiSlice";
 
 const CatalogsComponent: React.FC = () => {
   const { data: catalogs, error, isLoading } = useGetCatalogsQuery();
