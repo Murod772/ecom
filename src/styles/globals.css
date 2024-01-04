@@ -16,3 +16,8 @@ body {
 a{
   color: var(--gray-777)
 }
+
+.image-logo{
+  width: 244px;
+  height: auto;
+}

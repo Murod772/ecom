@@ -21,7 +21,8 @@ const HeaderComponent = () => {
             alt="WBHELPER"
             width={244}
             height={28}
-            className="h-8"
+            className="h-8 image-logo"
+            priority
           />
           <nav className="flex space-x-8">
             <a href="#" className="mx-2 hover:border-b-2 border-MainYellow">

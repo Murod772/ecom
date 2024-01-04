@@ -36,7 +36,9 @@ const columns = [
       <Image
         src={info.getValue()}
         alt=""
-        style={{ width: "50px", height: "50px" }}
+        width={50}
+        height={65}
+        style={{ width: "50px", height: "65px" }}
       />
     ),
     header: "Image",
