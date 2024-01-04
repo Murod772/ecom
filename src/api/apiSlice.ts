@@ -43,9 +43,7 @@ export const apiSlice = createApi({
     getCatalogs: builder.query<any, void>({
       query: () => "/wb/catalogs/",
     }),
-    getCategoryPriorities: builder.query<CategoryPriorityType[], void>({
-      query: () => "/path/to/subject_priorities",
-    }),
+
   }),
 });
 
